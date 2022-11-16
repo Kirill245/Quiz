@@ -34,4 +34,15 @@ class QuestionController extends Controller
      public function destroy($id){
          Question::destroy($id);
      }
+     public function index(){
+        $users = Question::table('question')->select('questionid', 'question as question_name')->get();
+  
+        foreach($users as $key => $user){
+           if($user['id'] == 1){
+              $user[$key]['group'] = 'admin';
+           }
+        }
+  
+        return view('user.index', ['users' => $users]);
+     }
 }

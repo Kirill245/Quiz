@@ -20,5 +20,3 @@ Route::get('/', function () {
 });
 
 Route::get('/start', [QuestionController::class, 'index']);
-
-Route::resource('/start', 'QuestionController', ['only' => ['store', 'update',  'destroy']]); 
