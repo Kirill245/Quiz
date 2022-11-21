@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "../../../../xampp/htdocs/Quizz"
+		},
+		{
+			"path": "../Online-Quiz-Laravel"
+		}
+	],
+	"settings": {}
+}

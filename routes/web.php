@@ -16,7 +16,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('welcome');
 });
 
-Route::get('/start', [QuestionController::class, 'index']);
+Route::any("answer", function(){
+    return view('answer');
+});
+
+Route::any("start", function(){
+    return view('start');
+});
+
+Route::any("finish", function(){
+    return view('finish');
+});
+
+Route::any('add', 'QuestionController@add');
+
+Route::any('questions', 'QuestionController@show');

@@ -3,46 +3,41 @@
 namespace App\Http\Controllers;
 
 use App\Models\Question;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller
 {
-     public function __construct()
-     {
-         $this->middleware('auth');
+     public function add(Request $request){
+        $validate=$request->validate([
+            'question'=>'required',
+            'optA'=>'required',
+            'optB'=>'required',
+            'optC'=>'required',
+            'optD'=>'required',
+            'ans'=>'required',
+
+        ]);
+        $q = new question();
+
+        $q -> question=$request->question;
+        $q -> a=$request->optA;
+        $q -> b=$request->optB;
+        $q -> c=$request->optC;
+        $q -> d=$request->optD;
+        $q -> ans=$request->ans;
+
+        $q->save();
+
+        Session::put('successMessage', "Question successfully added");
+
+        return redirect('questions');
      }
-     
-     public function store(Request $request){
-         $question = new Question;
-         $question->questionnaire_id = $request->input('q_id');
-         $question->question_name = $request->input('q_name');
-         $question->question_type = $request->input('q_type');
-         $question->choices = $request->input('choices');
-         $question->answer = $request->input('q_ans');
-         $question->save();
+
+     public function show(){
+        $qs = question::all();
+
+        return view('questions')->with(['questions' => $qs]);
      }
- 
-     public function update(Request $request, $id){
-         $question = Question::find($id);
-         $question->question_name = $request->input('q_name');
-         $question->question_type = $request->input('q_type');
-         $question->choices = $request->input('choices');
-         $question->answer = $request->input('q_ans');
-         $question->save();
-     }
- 
-     public function destroy($id){
-         Question::destroy($id);
-     }
-     public function index(){
-        $users = Question::table('question')->select('questionid', 'question as question_name')->get();
-  
-        foreach($users as $key => $user){
-           if($user['id'] == 1){
-              $user[$key]['group'] = 'admin';
-           }
-        }
-  
-        return view('user.index', ['users' => $users]);
-     }
+
 }
