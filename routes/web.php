@@ -31,6 +31,10 @@ Route::any("finish", function(){
     return view('finish');
 });
 
-Route::any('add', 'QuestionController@add');
+Route::get('/add', [QuestionController::class, 'add']);
 
-Route::any('questions', 'QuestionController@show');
+Route::get('/update', [QuestionController::class, 'update']);
+
+Route::get('/delete', [QuestionController::class, 'delete']);
+
+Route::get('/questions', [QuestionController::class, 'show']);
