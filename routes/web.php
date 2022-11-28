@@ -31,10 +31,14 @@ Route::any("finish", function(){
     return view('finish');
 });
 
-Route::get('/add', [QuestionController::class, 'add']);
+Route::post('/add', [QuestionController::class, 'add']);
 
-Route::get('/update', [QuestionController::class, 'update']);
+Route::post('/update', [QuestionController::class, 'update']);
 
-Route::get('/delete', [QuestionController::class, 'delete']);
+Route::delete('/delete', [QuestionController::class, 'delete']);
 
 Route::get('/questions', [QuestionController::class, 'show']);
+
+Route::get('/startquiz', [QuestionController::class, 'startquiz']);
+
+Route::post('/submitans', [QuestionController::class, 'submitans']);

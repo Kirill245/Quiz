@@ -28,8 +28,8 @@ class QuestionController extends Controller
         $q -> ans=$request->ans;
 
         $q->save();
-
-        Session::put('successMessage', "Question successfully added");
+      
+        $request->session()->put('successMessage', 'Question successfully added');
 
         return redirect('questions');
      }
@@ -63,7 +63,7 @@ class QuestionController extends Controller
 
       $q->save();
 
-      Session::put('successMessage', "Question successfully updated");
+      $request->session()->put('successMessage', 'Question successfully updated');
 
       return redirect('questions');
    }
@@ -77,9 +77,67 @@ class QuestionController extends Controller
 
       question::where('id', $request->id)->delete();
 
-      Session::put('successMessage', "Question successfully deleted");
+      $request->session()->put('successMessage', 'Question successfully deleted');
 
       return redirect('questions');
+   }
+
+   public function startquiz(){
+
+      session()->put('nextq', '1');
+      session()->put('wrongans', '0');
+      session()->put('correctans', '0');
+
+      $q=question::all()->first();
+
+      return view('answer') -> with(['question'=>$q]);
+   }
+
+   public function submitans(Request $request){
+
+      $nextq=session()->get('nextq');
+      $wrongans=session()->get('wrongans');
+      $correctans=session()->get('correctans');
+
+      $validate=$request->validate([
+         'ans'=>'required',
+         'dbans'=>'required',
+     ]);
+
+     $nextq +=1;
+
+     if($request->dbans == $request->ans){
+
+      $correctans+=1;
+     }
+     else{
+      $wrongans+=1;
+     }
+
+     session()->put('nextq', $nextq);
+     session()->put('wrongans', $wrongans);
+     session()->put('correctans', $correctans);
+
+     $i=0;
+
+     $questions=question::all();
+
+     foreach($questions as $question){
+
+      $i++;
+
+      if($questions->count() < $nextq){
+         return view('finish');
+      }
+
+      if($i==$nextq){
+         return view('answer')->with(['question' => $question]);
+      }
+     }
+
+
+
+
    }
 
 }

@@ -4,16 +4,17 @@
 
 <div class="back1_2">
     <div class="container-fluid">
-
+        <form method="post" action="/submitans">
+            @csrf
         <div class="row" style="padding-top: 30vh; color: black;">
             <div class="col-md-3"></div>
             <div class="col-md-4">
-                <h4>№1 What is your favorite subject?</h4>
-                <input name="ans" type="radio"> :(A) <small>Math</small><br>
-                <input checked="true" name="ans" type="radio"> :(B) <small>Informatics</small><br>
-                <input name="ans" type="radio"> :(C) <small>Geography</small><br>
-                <input name="ans" type="radio"> :(C) <small>Literature</small><br>
-                <input value="" style="visibility:hidden" name="dbans">
+                <h4>№{{Session::get("nextq")}} {{$question->question}}</h4>
+                <input value="a" name="ans" type="radio"> :(A) <small>{{$question->a}}</small><br>
+                <input value="b" checked="true" name="ans" type="radio"> :(B) <small>{{$question->b}}</small><br>
+                <input value="c" name="ans" type="radio"> :(C) <small>{{$question->c}}</small><br>
+                <input value="d" name="ans" type="radio"> :(D) <small>{{$question->d}}</small><br>
+                <input value="{{$question->ans}}" style="visibility:hidden" name="dbans">
             </div>
             <div class="col-md-5"></div>
         </div>
@@ -22,10 +23,11 @@
         <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-4">
-            <a href="#"><button style="float: right;" class="btn btn-primary">Next</button></a>
+            <button type="submit" style="float: right;" class="btn btn-primary">Next</button>
         </div>
         <div class="col-md-5"></div>
         </div>
+        </form>
     </div>
 </div>
 

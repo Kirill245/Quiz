@@ -18,7 +18,7 @@
     <div class="col-md-4">
         <h3>Are you ready?</h3>
         <br>
-        <a href="#"><button class="btn btn-primary" style="margin-left: 10%;">Start Quiz</button></a>
+        <a href="startquiz"><button class="btn btn-primary" style="margin-left: 10%;">Start Quiz</button></a>
         <div class="text-centr"><a href="/">Home</a></div>
     </div>
     <div class="col-md-3 "></div>
