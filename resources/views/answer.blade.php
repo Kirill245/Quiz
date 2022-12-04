@@ -6,13 +6,14 @@
     <div class="container-fluid">
         <form method="post" action="/submitans">
             @csrf
-
         <div class="row" style="padding-top: 30vh; color: black; ">
-
-            <div class="col-md-4" ></div>
+        <h3 style="text-align: center; margin-bottom: 50px;">Choose the correct answer:</h3>
+            <div class="col-md-4" >
+                
+            </div>
 
             <div class="col-md-4" style=" background: lightyellow;
-    outline: 3px solid #000;">
+    outline: 2px solid #000; border-radius: 12px;">
                 <h4>№{{Session::get("nextq")}} {{$question->question}}</h4>
                 <input value="a" name="ans" type="radio"> :(A) <small>{{$question->a}}</small><br>
                 <input value="b" checked="true" name="ans" type="radio"> :(B) <small>{{$question->b}}</small><br>

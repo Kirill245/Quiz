@@ -1,14 +1,20 @@
 .back1{
     width: 100%;
     height: 100%;
-    background: url("../images/back.jpg");
+    background: url("../images/page1.jpg");
     background-size: cover;
 }
 .back1_2{
     width: 100%;
     height: 100%;
-    background: url("../images/back1.png");
+    background: url("../images/page2.jpg");
     background-size: cover;
+}
+.back1_3{
+  width: 100%;
+  height: 100%;
+  background: url("../images/page2.jpg");
+  background-size: cover;
 }
 body {
     color: #566787;

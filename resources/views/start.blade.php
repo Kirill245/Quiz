@@ -2,6 +2,7 @@
 
 <link href="files/stl.css" rel="stylesheet" type="text/css">
 
+<div class="back1_3">
 <div class="container-fluid">
 <br>
 <br>
@@ -23,5 +24,5 @@
     <div class="col-md-3 "></div>
 </div>
 </div>
-
+</div>
 <script src="files/jquery.min.js"></script>

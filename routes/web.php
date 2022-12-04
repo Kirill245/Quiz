@@ -42,3 +42,12 @@ Route::get('/questions', [QuestionController::class, 'show']);
 Route::get('/startquiz', [QuestionController::class, 'startquiz']);
 
 Route::post('/submitans', [QuestionController::class, 'submitans']);
+
+Route::middleware("guest")->group(function(){
+    
+    Route::get('/login', [\App\Http\Controllers\AuthController::class, 'showLoginForm'])->name("login");
+    Route::post('/login_process', [\App\Http\Controllers\AuthController::class, 'login'])->name("login_process");
+    
+    Route::get('/register', [\App\Http\Controllers\AuthController::class, 'showRegisterForm'])->name("register");
+    Route::post('/register_process', [\App\Http\Controllers\AuthController::class, 'showRegisterForm'])->name("register_process");
+});
