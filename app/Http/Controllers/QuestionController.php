@@ -135,9 +135,6 @@ class QuestionController extends Controller
       }
      }
 
-
-
-
    }
 
 }

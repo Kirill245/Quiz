@@ -35,7 +35,7 @@ Route::post('/add', [QuestionController::class, 'add']);
 
 Route::post('/update', [QuestionController::class, 'update']);
 
-Route::delete('/delete', [QuestionController::class, 'delete']);
+Route::post('/delete', [QuestionController::class, 'delete']);
 
 Route::get('/questions', [QuestionController::class, 'show']);
 
