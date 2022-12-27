@@ -20,8 +20,9 @@
         <label>Incorrect: <small>{{Session::get('wrongans') }}</small></label>
         <label>Final Result: <small>{{Session::get('correctans')}} / {{Session::get('correctans') +  Session::get('wrongans')}}</small></label>
         <br>
-        <a href="/"><button class="btn btn-primary" style="margin-left: 10%;">Finish Quiz</button></a>
-        <div class="text-center"><a href="/">Home</a></div>
+        <br>
+        <br><br>
+        <a href="/"><button class="btn btn-primary" style="margin-left: 20%;">Finish Quiz</button></a>
     </div>
     <div class="col-md-3 "></div>
 </div>

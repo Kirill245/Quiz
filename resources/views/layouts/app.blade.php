@@ -19,7 +19,7 @@
 </head>
 <body>
 
-<div class="body">\
+<div class="body">
     <h1 style="text-align: center;">Table of Questions</h1>
     @include('inc.header')
 
